@@ -34,4 +34,5 @@ public class PageResult<T> implements Serializable {
         this.pageSize = pageSize;
     }
 
+
 }
