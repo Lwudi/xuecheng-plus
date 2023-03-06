@@ -2,10 +2,10 @@ package com.xuecheng.base.config;
 
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.xuecheng.base.model.PageParams;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -42,5 +42,6 @@ public class LocalDateTimeConfig {
             builder.deserializerByType(LocalDateTime.class, localDateTimeDeserializer());
         };
     }
+
 
 }

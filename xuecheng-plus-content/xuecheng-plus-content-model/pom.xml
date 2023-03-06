@@ -14,17 +14,9 @@
     <artifactId>xuecheng-plus-content-model</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.xuecheng</groupId>
-            <artifactId>xuecheng-plus-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.xuecheng</groupId>
-            <artifactId>xuecheng-plus-base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
+
         <!--存在mybatisplus注解添加相关注解保证不报错-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -40,6 +32,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
     </dependencies>
 
 
