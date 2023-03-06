@@ -1,1 +1,1 @@
-GET http://{{system_host}}/system/dictionary/all
+GET http://{{gateway_host}}/system/dictionary/all

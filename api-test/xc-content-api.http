@@ -8,7 +8,7 @@ Content-Type: application/json
   "publishStatus": ""
 }
 ### 按ID查询
-GET /content/course/40
+GET http://{{gateway_host}}/content/course/40
 ###课程分类查询
 GET http://{{content_host}}/content/course-category/tree-nodes
 
