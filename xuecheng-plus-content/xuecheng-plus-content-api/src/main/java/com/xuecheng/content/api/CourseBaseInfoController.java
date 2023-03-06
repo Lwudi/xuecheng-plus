@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * @create: 2023-02-27 13:12
  **/
 @RestController
-@Api(value = "课程内容基本数据接口", tags = "课程内容基本数据接口")
+@Api(value = "课程内容基本数据接口", tags = "课程内容基本数据接口。")
 public class CourseBaseInfoController {
     @Autowired
     CourseBaseInfoService courseBaseInfoService;
