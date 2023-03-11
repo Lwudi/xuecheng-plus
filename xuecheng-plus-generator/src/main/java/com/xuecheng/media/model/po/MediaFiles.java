@@ -1,10 +1,11 @@
 package com.xuecheng.media.model.po;
 
-import com.baomidou.mybatisplus.annotation.*;
-import lombok.Data;
-
-import java.io.Serializable;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
+import lombok.Data;
+import com.baomidou.mybatisplus.annotation.TableName;
 
 /**
  * <p>
@@ -20,9 +21,8 @@ public class MediaFiles implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 主键
+     * 文件id,md5值
      */
-    @TableId(value = "id")
     private String id;
 
     /**
@@ -41,7 +41,7 @@ public class MediaFiles implements Serializable {
     private String filename;
 
     /**
-     * 文件类型（文档，音频，视频）
+     * 文件类型（图片、文档，视频）
      */
     private String fileType;
 
@@ -51,25 +51,24 @@ public class MediaFiles implements Serializable {
     private String tags;
 
     /**
-     * 存储源
+     * 存储目录
      */
     private String bucket;
 
     /**
-     * 文件标识
+     * 存储路径
+     */
+    private String filePath;
+
+    /**
+     * 文件id
      */
     private String fileId;
-    /*
-    * 存储目录
-    * */
-    private String filePath;
 
     /**
      * 媒资文件访问地址
      */
     private String url;
-
-//    private String timelength;
 
     /**
      * 上传人
@@ -89,7 +88,7 @@ public class MediaFiles implements Serializable {
     private LocalDateTime changeDate;
 
     /**
-     * 状态,1:未处理，视频处理完成更新为2
+     * 状态,1:正常，0:不展示
      */
     private String status;
 
@@ -107,11 +106,11 @@ public class MediaFiles implements Serializable {
      * 审核意见
      */
     private String auditMind;
+
     /**
      * 文件大小
      */
     private Long fileSize;
-
 
 
 }

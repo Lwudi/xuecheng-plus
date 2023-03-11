@@ -1,0 +1,9 @@
+### 上传文件
+POST {{media_host}}/media/upload/coursefile
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="filedata"; filename="0f4bd884-dc9c-4cf9-b59e-7d5958fec3dd.jpg"
+Content-Type: application/octet-stream
+
+< E:\图片\Reggie\0f4bd884-dc9c-4cf9-b59e-7d5958fec3dd.jpg
