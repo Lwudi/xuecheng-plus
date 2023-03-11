@@ -39,7 +39,7 @@ public class SampleXxlJob {
     @XxlJob("demoJobHandler")
     public void demoJobHandler() throws Exception {
         System.out.println("处理视频.......");
-
+        System.out.println("123");
 
     }
 
