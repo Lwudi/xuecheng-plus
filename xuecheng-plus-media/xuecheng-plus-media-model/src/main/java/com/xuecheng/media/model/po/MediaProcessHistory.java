@@ -58,6 +58,14 @@ public class MediaProcessHistory implements Serializable {
      * 媒资文件访问地址
      */
     private String url;
+    /**
+     * 失败次数
+     */
+    private Integer failCount;
+    /*
+     * 文件地址
+     */
+    private String filePath;
 
 
 }

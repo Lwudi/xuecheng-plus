@@ -8,6 +8,8 @@ import com.xuecheng.media.model.dto.UploadFileParamsDto;
 import com.xuecheng.media.model.dto.UploadFileResultDto;
 import com.xuecheng.media.model.po.MediaFiles;
 
+import java.io.File;
+
 /**
  * @description 媒资文件管理业务类
  * @author Mr.M
@@ -94,4 +96,39 @@ public interface MediaFileService {
      */
     public RestResponse mergechunks(Long companyId,String fileMd5,int chunkTotal,UploadFileParamsDto uploadFileParamsDto);
 
+    /**
+    * @description 预览功能
+    * @param mediaId
+    * @return com.xuecheng.media.model.po.MediaFiles
+    * @author 31151
+    * @date 2023/3/12 15:43
+    */
+    MediaFiles getFileById(String mediaId);
+
+    /**
+    * @description 从minio下载视频
+    * @param bucket
+     * @param objectName
+    * @return java.io.File
+    * @author 31151
+    * @date 2023/3/13 1:29
+    */
+    public File downloadFileFromMinIO(String bucket, String objectName);
+    /**
+    * @description 获得content/type
+    * @param exension
+    * @return java.lang.String
+    * @author 31151
+    * @date 2023/3/13 2:37
+    */
+    public String getMimeType(String exension);
+    /**
+    * @description 根据MD5获得objectname
+    * @param fileMd5
+     * @param fileExt
+    * @return java.lang.String
+    * @author 31151
+    * @date 2023/3/13 2:50
+    */
+    public String getFilePath(String fileMd5,String fileExt);
 }

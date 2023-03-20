@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xuecheng.base.exception.XueChengException;
 import com.xuecheng.content.mapper.TeachplanMapper;
 import com.xuecheng.content.mapper.TeachplanMediaMapper;
+import com.xuecheng.content.model.dto.BindTeachplanMediaDto;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
 import com.xuecheng.content.model.po.Teachplan;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -126,6 +128,46 @@ public class TeachplanServiceImpl extends ServiceImpl<TeachplanMapper, Teachplan
         Teachplan changedTeachplan = teachplanMapper.selectOne(wrapper);
             exchangeOrderby(teachplan,changedTeachplan);
 
+    }
+@Transactional
+    @Override
+    public void associationMedia(BindTeachplanMediaDto bindTeachplanMediaDto) {
+        String fileName = bindTeachplanMediaDto.getFileName();
+        String mediaId = bindTeachplanMediaDto.getMediaId();
+        Long teachplanId = bindTeachplanMediaDto.getTeachplanId();
+
+        // 先根据请求参数查询出对应的教学计划teachplan
+        Teachplan teachplan = teachplanMapper.selectById(teachplanId);
+        if (teachplan == null) {
+            XueChengException.err("教学计划不存在");
+        }
+        Integer grade = teachplan.getGrade();
+        if(grade!=2){
+            XueChengException.err("只允许第二级教学计划绑定媒资文件");
+        }
+
+
+        LambdaQueryWrapper<TeachplanMedia> wrapper=new LambdaQueryWrapper<>();
+        wrapper.eq(TeachplanMedia::getTeachplanId,teachplanId);
+         teachplanMediaMapper.delete(wrapper);
+         TeachplanMedia teachplanMedia = new TeachplanMedia();
+         teachplanMedia.setMediaFilename(fileName);
+         teachplanMedia.setMediaId(mediaId);
+         teachplanMedia.setTeachplanId(teachplanId);
+         teachplanMedia.setCourseId(teachplan.getCourseId());
+         teachplanMedia.setCreateDate(LocalDateTime.now());
+//         teachplanMedia.setChangePeople();
+//         teachplanMedia.setCreatePeople();
+
+         teachplanMediaMapper.insert(teachplanMedia);
+
+    }
+
+    @Override
+    public void unassociationMedia(Long teachPlanId, String mediaId) {
+        LambdaQueryWrapper<TeachplanMedia> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(TeachplanMedia::getMediaId,mediaId).eq(TeachplanMedia::getTeachplanId,teachPlanId);
+        teachplanMediaMapper.delete(wrapper);
     }
 
     private void exchangeOrderby(Teachplan teachplan,Teachplan changedTeachplan) {

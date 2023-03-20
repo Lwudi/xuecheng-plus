@@ -31,7 +31,10 @@ public class MediaProcess implements Serializable {
      * 文件名称
      */
     private String filename;
-
+    /*
+     * 文件地址
+     */
+    private String filePath;
     /**
      * 存储源
      */
@@ -57,6 +60,15 @@ public class MediaProcess implements Serializable {
      * 媒资文件访问地址
      */
     private String url;
+    /**
+     * 失败原因
+     */
+    private String errormsg;
+
+    /**
+     * 失败次数
+     */
+    private Integer failCount;
 
 
 }

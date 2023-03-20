@@ -31,7 +31,7 @@ public class CourseTeacher implements Serializable {
     private Long courseId;
 
     /**
-     * 教师标识
+     * 教师名称
      */
     private String teacherName;
 

@@ -42,7 +42,7 @@ public interface CourseBaseInfoService {
     * @author 31151
     * @date 2023/3/1 19:09
     */
-    CourseBaseInfoDto getCourseBaseInfo(long courseId);
+    CourseBaseInfoDto getCourseBaseInfo(Long courseId);
     /**
     * @description 按ID修改课程信息
     * @param companyId
