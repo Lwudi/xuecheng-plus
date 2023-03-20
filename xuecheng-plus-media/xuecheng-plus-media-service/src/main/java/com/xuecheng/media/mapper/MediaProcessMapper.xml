@@ -18,5 +18,8 @@
     <sql id="Base_Column_List">
         id, file_id, filename, bucket, status, create_date, finish_date, url
     </sql>
+    <select id="selectListByShardIndex" resultType="com.xuecheng.media.model.po.MediaProcess">
+        select * from media_process t where t.id%#{shardTotal}=#{shardIndex} and (t.status='1' or t.status='3') and t.fail_count &lt; 3 limit #{count}
+    </select>
 
 </mapper>

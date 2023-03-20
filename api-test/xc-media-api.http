@@ -7,3 +7,6 @@ Content-Disposition: form-data; name="filedata"; filename="0f4bd884-dc9c-4cf9-b5
 Content-Type: application/octet-stream
 
 < E:\图片\Reggie\0f4bd884-dc9c-4cf9-b59e-7d5958fec3dd.jpg
+
+###
+GET {{media_host}}/media/lxw

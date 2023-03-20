@@ -1,9 +1,11 @@
 import com.j256.simplemagic.ContentInfo;
 import com.j256.simplemagic.ContentInfoUtil;
+import com.xuecheng.media.service.MediaProcessService;
 import io.minio.*;
 import io.minio.errors.*;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +22,11 @@ import java.security.NoSuchAlgorithmException;
  * @create: 2023-03-07 11:20
  **/
 
+
+
 public class Test {
+    @Autowired
+    MediaProcessService mediaProcessService;
     MinioClient minioClient =
             MinioClient.builder()
                     .endpoint("https://play.min.io")
@@ -41,13 +47,13 @@ public class Test {
 
     @org.junit.jupiter.api.Test
     public void deleteTest(){
-        RemoveObjectArgs removeObjectArgs = RemoveObjectArgs.builder().bucket("testbucket").object("01-今日课程介绍.mp4").build();
+        RemoveObjectArgs removeObjectArgs = RemoveObjectArgs.builder().bucket("video").object("video/e/c/ec169eaf7263eb64605ec9fab710485b").build();
 
         try {
             minioClient.removeObject(removeObjectArgs);
-            System.out.println("上传成功");
+            System.out.println("删除成功");
         }catch (Exception e){
-            System.out.println("上传失败了");
+            System.out.println("删除失败了");
         }
     }
 
@@ -74,5 +80,6 @@ public class Test {
         int length = a.length();
         System.out.println(length);
     }
+
 
 }

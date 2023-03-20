@@ -2,6 +2,7 @@ package com.xuecheng.media.api;
 
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
+import com.xuecheng.base.model.RestResponse;
 import com.xuecheng.media.model.dto.QueryMediaParamsDto;
 import com.xuecheng.media.model.dto.UploadFileParamsDto;
 import com.xuecheng.media.model.dto.UploadFileResultDto;
@@ -38,6 +39,11 @@ public class MediaFilesController {
   return mediaFileService.queryMediaFiels(companyId,pageParams,queryMediaParamsDto);
  }
 
+
+
+
+
+ @ApiOperation("上传文件")
  @RequestMapping(value = "/upload/coursefile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
  @ResponseBody
     public UploadFileResultDto upload(@RequestPart("filedata") MultipartFile upload,
@@ -59,9 +65,13 @@ public class MediaFilesController {
      uploadFileParamsDto.setFilename(upload.getOriginalFilename());
      uploadFileParamsDto.setContentType(contentType);
      return mediaFileService.uploadFile(companyId,uploadFileParamsDto,upload.getBytes(),folder,objectName);
+ }
 
-
-
+ @ApiOperation(value = "预览文件")
+ @GetMapping("/preview/{mediaId}")
+ public RestResponse<String> getPlayUrlByMediaId(@PathVariable String mediaId) {
+  MediaFiles mediaFile = mediaFileService.getFileById(mediaId);
+  return RestResponse.success(mediaFile.getUrl());
  }
 
 }

@@ -109,6 +109,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
 
             XueChengException.err("收费规则为空");
         }*/
+        
 
         //新增对象
         CourseBase courseBaseNew = new CourseBase();
@@ -151,7 +152,7 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
     }
 
     //根据课程id查询课程基本信息，包括基本信息和营销信息
-    public CourseBaseInfoDto getCourseBaseInfo(long courseId){
+    public CourseBaseInfoDto getCourseBaseInfo(Long courseId){
         CourseBase courseBase = courseBaseMapper.selectById(courseId);
         CourseMarket courseMarket = courseMarketMapper.selectById(courseId);
 
